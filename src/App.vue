@@ -3,8 +3,30 @@
 </template>
 
 <script>
-</script>
+import { useRouter, useRoute } from "vue-router";
+import firebase from "firebase";
+import { onBeforeMount } from "vue";
+export default {
+    setup() {
+        const router = useRouter();
+        const route = useRoute();
 
+        // All we need to make our Routes Secure
+        onBeforeMount(() => {
+            firebase.auth().onAuthStateChanged((user) => {
+                if (!user) {
+                    router.replace("/login");
+                } else if (
+                    route.path == "/login" ||
+                    route.path == "/register"
+                ) {
+                    router.replace("/");
+                }
+            });
+        });
+    },
+};
+</script>
 <style lang="scss">
 body {
     background-color: #2c3e50;

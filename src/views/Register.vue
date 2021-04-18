@@ -1,5 +1,5 @@
 <template>
-  <h1>Registration Form</h1>
+  <!-- <h1>Registration Form</h1>
   <form @submit.prevent="Register">
     <label>Email</label>
     <input type="text" placeholder="Enter your email" v-model="email" />
@@ -13,10 +13,41 @@
     <button>Register</button>
     <br />
     <p>Already have an account? <router-link to="/login">Login</router-link></p>
+  </form> -->
+  <h1>Register Form</h1>
+  <form @submit.prevent="Register">
+    <label>Email</label>
+    <input type="text" v-model="email" required />
+    <label>Password</label>
+    <input type="password" v-model="password" required />
+    <button>Register</button>
+    <br />
+    <p>Already have an account? <router-link to="/login">Login</router-link></p>
   </form>
 </template>
 
 <script>
+// import { ref } from "vue";
+// import firebase from "firebase";
+// export default {
+//   setup() {
+//     const email = ref("");
+//     const password = ref("");
+
+//     const Register = () => {
+//       firebase
+//         .auth()
+//         .createUserWithEmailAndPassword(email.value, password.value)
+//         .then((user) => console.log(user))
+//         .catch((err) => console.log(err.message));
+//     };
+//     return {
+//       Register,
+//       email,
+//       password,
+//     };
+//   },
+// };
 import { ref } from "vue";
 import firebase from "firebase";
 export default {
@@ -28,13 +59,16 @@ export default {
       firebase
         .auth()
         .createUserWithEmailAndPassword(email.value, password.value)
-        .then((user) => console.log(user))
-        .catch((err) => console.log(err.message));
+        .then(() => {
+          console.log("Registered Successfully");
+          console.log(email, password);
+        })
+        .then((data) => console.log(data));
     };
     return {
-      Register,
       email,
       password,
+      Register,
     };
   },
 };

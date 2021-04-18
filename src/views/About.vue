@@ -1,8 +1,10 @@
 <template>
-  <div class="about">
+  <!-- <div class="about">
     <h1>This is an about page</h1>
     <button><router-link to="/">Go to Home Page</router-link></button>
-  </div>
+  </div> -->
+  <h1>About</h1>
+  <button><router-link to="/">Go back to Home Page</router-link></button>
 </template>
 
 <style scoped>

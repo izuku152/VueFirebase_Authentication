@@ -1,6 +1,9 @@
 <template>
-  <h1>Welcome, {{ name }}</h1>
+  <!-- <h1>Welcome, {{ name }}</h1>
   <br />
+  <button><router-link to="/about">Go to About</router-link></button>
+  <button @click="Logout">Logout</button> -->
+  <h1>Home Page</h1>
   <button><router-link to="/about">Go to About</router-link></button>
   <button @click="Logout">Logout</button>
 </template>
